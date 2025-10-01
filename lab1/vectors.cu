@@ -4,23 +4,28 @@
 #include <cuda.h>
 
 #define RANGE 17.78
+#define SIZE_CONFIGS 6
 
 /*** TODO: insert the declaration of the kernel function below this line ***/
-
+__global__ void vecGPU(const float *ad, const float *bd, float *cd, int n);
 
 /**** end of the kernel declaration ***/
 
 
 int main(int argc, char *argv[]){
 
-	int n = 0; //number of elements in the arrays
+	int n = 0, blocksPerGrid = 8, threadsPerBlock = 500; //number of elements in the arrays
 	int i;  //loop index
 	float *a, *b, *c; // The arrays that will be processed in the host.
 	float *temp;  //array in host used in the sequential code.
 	float *ad, *bd, *cd; //The arrays that will be processed in the device.
 	clock_t start, end; // to meaure the time taken by a specific part of code
 	
-	if(argc != 2){
+	if(argc == 4){
+		blocksPerGrid = atoi(argv[2]);
+		threadsPerBlock = atoi(argv[3]);
+	}
+	else if(argc != 2){
 		printf("usage:  ./vectorprog n\n");
 		printf("n = number of elements in each vector\n");
 		exit(1);
@@ -28,7 +33,9 @@ int main(int argc, char *argv[]){
 		
 	n = atoi(argv[1]);
 	printf("Each vector will have %d elements\n", n);
-	
+
+
+	printf("Using %d blocks per grid and %d threads per block\n", threadsPerBlock, blocksPerGrid);
 	
 	//Allocating the arrays in the host
 	
@@ -79,19 +86,42 @@ int main(int argc, char *argv[]){
 		1. allocate ad, bd, and cd in the device
 		2. send a, b, and c to the device  
 		*/
-		start = clock();
-		
+
+	// start = clock(); // starting the clock before memory allocation and data transfer
+
+	cudaError_t err;
+	err = cudaMalloc((void**)&ad, n * sizeof(float));
+	err = cudaMalloc((void**)&bd, n * sizeof(float));
+	err = cudaMalloc((void**)&cd, n * sizeof(float));
+
+	err = cudaMemcpy(ad, a, n * sizeof(float), cudaMemcpyHostToDevice);
+	err = cudaMemcpy(bd, b, n * sizeof(float), cudaMemcpyHostToDevice);
+	err = cudaMemcpy(cd, c, n * sizeof(float), cudaMemcpyHostToDevice);
+	end = clock();
+
+	// printf("Total time taken by the cudaMemcpy = %lf\n", (double)(end - start) / CLOCKS_PER_SEC);
+
 	/* TODO: 	
 		3. write the kernel, call it: vecGPU
 		4. call the kernel (the kernel itself will be written at the comment at the end of this file), 
 		   you need to decide about the number of threads, blocks, etc and their geometry.
 		*/
-		end = clock();
+	start = clock(); // starting the clock after memory allocation and data transfer
+
+	vecGPU<<<blocksPerGrid, threadsPerBlock>>>(ad, bd, cd, n);
+	err = cudaGetLastError();
+	err = cudaDeviceSynchronize();
+
+	end = clock();
 	/* TODO: 
 		5. bring the cd array back from the device and store it in c array (declared earlier in main)
 		6. free ad, bd, and cd
 	*/
-	
+	err = cudaMemcpy(c, cd, n * sizeof(float), cudaMemcpyDeviceToHost);
+
+	cudaFree(ad);
+	cudaFree(bd);
+	cudaFree(cd);
 	
 	printf("Total time taken by the GPU part = %lf\n", (double)(end - start) / CLOCKS_PER_SEC);
 	/******************  The end of the GPU part: Do not modify anything in main() below this line  ************/
@@ -109,3 +139,11 @@ int main(int argc, char *argv[]){
 
 
 /**** TODO: Write the kernel itself below this line *****/
+__global__ void vecGPU(const float *ad, const float *bd, float *cd, int n)
+{
+	int idx = blockIdx.x * blockDim.x + threadIdx.x;
+	int stride = blockDim.x * gridDim.x;
+    for (int i = idx; i < n; i += stride) {
+        cd[i] += ad[i] * bd[i];
+    }
+}
