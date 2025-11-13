@@ -1,0 +1,302 @@
+
+Fatbin elf code:
+================
+arch = sm_52
+code version = [1,7]
+host = linux
+compile_size = 64bit
+
+64bit elf: type=2, abi=7, sm=52, toolkit=124, flags = 0x340534
+Sections:
+Index Offset   Size ES Align        Type        Flags Link     Info Name
+    1     40     5d  0  1            STRTAB       0    0        0 .shstrtab
+    2     9d     5d  0  1            STRTAB       0    0        0 .strtab
+    3    100     48 18  8            SYMTAB       0    2        3 .symtab
+    4    148     20  8  4    CUDA_CALLGRAPH       0    3        0 .nv.callgraph
+    5    168     10  8  8    CUDA_RELOCINFO       0    0        0 .nv.rel.action
+
+.section .strtab
+
+.section .shstrtab
+
+.section .symtab
+ index           value           size      info    other  shndx    name  
+   0               0               0        0        0      0     (null)
+ 0x1               0               0      0x3        0    0x4     .nv.callgraph
+ 0x2               0               0      0x3        0    0x5     .nv.rel.action
+
+
+.nv.callgraph
+ <0,-1>
+ <0,-2>
+ <0,-3>
+ <0,-4>
+
+
+.nv.rel.action
+Header : Base Relocation : R_CUDA_CONST_FIELD22_37
+Reloc type : Symbol Kind,Addend Shift,Source Position1,length1,Destination Position1,Source Position2,length2,Destination Position2
+R_CUDA_CONST_FIELD22_37 : EIVALUE_SYM_KIND_ADDR,0,0,17,37,0,5,54
+
+Fatbin elf code:
+================
+arch = sm_52
+code version = [1,7]
+host = linux
+compile_size = 64bit
+
+64bit elf: type=2, abi=7, sm=52, toolkit=124, flags = 0x340534
+Sections:
+Index Offset   Size ES Align        Type        Flags Link     Info Name
+    1     40     f6  0  1            STRTAB       0    0        0 .shstrtab
+    2    136    109  0  1            STRTAB       0    0        0 .strtab
+    3    240     90 18  8            SYMTAB       0    2        5 .symtab
+    4    2d0     30  0  4         CUDA_INFO       0    3        0 .nv.info
+    5    300     a8  0  4         CUDA_INFO      40    3        9 .nv.info._Z6vecGPUPKfS0_Pfi
+    6    3a8     20  8  4    CUDA_CALLGRAPH       0    3        0 .nv.callgraph
+    7    3c8     10  8  8    CUDA_RELOCINFO       0    0        0 .nv.rel.action
+    8    3d8    15c  0  4          PROGBITS      42    0        9 .nv.constant0._Z6vecGPUPKfS0_Pfi
+    9    540    5c0  0 20          PROGBITS       6    3 20000005 .text._Z6vecGPUPKfS0_Pfi
+
+.section .strtab
+
+.section .shstrtab
+
+.section .symtab
+ index           value           size      info    other  shndx    name  
+   0               0               0        0        0      0     (null)
+ 0x1               0               0      0x3        0    0x9     .text._Z6vecGPUPKfS0_Pfi
+ 0x2               0               0      0x3        0    0x8     .nv.constant0._Z6vecGPUPKfS0_Pfi
+ 0x3               0               0      0x3        0    0x6     .nv.callgraph
+ 0x4               0               0      0x3        0    0x7     .nv.rel.action
+ 0x5               0           0x5c0     0x12     0x10    0x9     _Z6vecGPUPKfS0_Pfi
+
+
+.nv.constant0._Z6vecGPUPKfS0_Pfi
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 0x00000000
+0x00000000 0x00000000 0x00000000 
+
+
+.nv.info
+	<0x1>
+	Attribute:	EIATTR_REGCOUNT
+	Format:	EIFMT_SVAL
+	Value:	function: _Z6vecGPUPKfS0_Pfi(0x5)	register count: 32
+	<0x2>
+	Attribute:	EIATTR_MIN_STACK_SIZE
+	Format:	EIFMT_SVAL
+	Value:	function: _Z6vecGPUPKfS0_Pfi(0x5)	min stack size: 0x0
+	<0x3>
+	Attribute:	EIATTR_FRAME_SIZE
+	Format:	EIFMT_SVAL
+	Value:	function: _Z6vecGPUPKfS0_Pfi(0x5)	frame size: 0x0
+	<0x4>
+	Attribute:	EIATTR_MIN_STACK_SIZE
+	Format:	EIFMT_SVAL
+	Value:	function: _Z6vecGPUPKfS0_Pfi(0x5)	min stack size: 0x0
+
+
+.nv.info._Z6vecGPUPKfS0_Pfi
+	<0x1>
+	Attribute:	EIATTR_CUDA_API_VERSION
+	Format:	EIFMT_SVAL
+	Value:	0x7c 
+	<0x2>
+	Attribute:	EIATTR_SW2393858_WAR
+	Format:	EIFMT_NVAL
+	<0x3>
+	Attribute:	EIATTR_SW1850030_WAR
+	Format:	EIFMT_NVAL
+	<0x4>
+	Attribute:	EIATTR_PARAM_CBANK
+	Format:	EIFMT_SVAL
+	Value:	0x2 0x1c0140 
+	<0x5>
+	Attribute:	EIATTR_CBANK_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x1c
+	<0x6>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x3	Offset  : 0x18	Size    : 0x4
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : CBANK	
+	<0x7>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : CBANK	
+	<0x8>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : CBANK	
+	<0x9>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : CBANK	
+	<0x10>
+	Attribute:	EIATTR_MAXREG_COUNT
+	Format:	EIFMT_HVAL
+	Value:	0xff
+	<0x11>
+	Attribute:	EIATTR_S2RCTAID_INSTR_OFFSETS
+	Format:	EIFMT_SVAL
+	Value:	0x18 
+	<0x12>
+	Attribute:	EIATTR_EXIT_INSTR_OFFSETS
+	Format:	EIFMT_SVAL
+	Value:	0x88 0x370 0x5a8 
+	<0x13>
+	Attribute:	EIATTR_INDIRECT_BRANCH_TARGETS
+	Format:	EIFMT_SVAL
+	Value:	
+		Offset of Indirect Branch: 0x218	 Number of targets: 1
+		Targets: 0x370 
+
+		Offset of Indirect Branch: 0x368	 Number of targets: 1
+		Targets: 0x370 
+
+	<0x14>
+	Attribute:	EIATTR_CRS_STACK_SIZE
+	Format:	EIFMT_SVAL
+	Value:	0x210 
+
+
+.nv.callgraph
+ <0,-1>
+ <0,-2>
+ <0,-3>
+ <0,-4>
+
+
+.nv.rel.action
+Header : Base Relocation : R_CUDA_CONST_FIELD22_37
+Reloc type : Symbol Kind,Addend Shift,Source Position1,length1,Destination Position1,Source Position2,length2,Destination Position2
+R_CUDA_CONST_FIELD22_37 : EIVALUE_SYM_KIND_ADDR,0,0,17,37,0,5,54
+
+
+.text._Z6vecGPUPKfS0_Pfi
+bar = 0	reg = 32	lmem=0	smem=0
+0xfe0007f6 0x001c4400 0x00870001 0x4c980780
+0x00270005 0x4c980780 0x02570002 0xf0c80000
+0xfe20073f 0x085fd841 0x02170000 0xf0c80000
+0x00270203 0x4f107f80 0x00270200 0x4e000000
+0xfe2007f1 0x001f9040 0x00370202 0x5b300018
+0x00570500 0x4e007f80 0x00570503 0x4f107f80
+0xfd4007ed 0x001fc000 0x05670207 0x4b6d0380
+0x00070f00 0x50b00000 0x00370500 0x5b300018
+0xfe0007fd 0x001c4400 0x0000000f 0xe3000000
+0x0ff70017 0x5b640380 0x00070a04 0x5cb80100
+0xe3a007f1 0x003fc801 0x2c000000 0xe2900000
+0x00470404 0x50800000 0xffe70405 0x1c00ffff
+0xfe20071d 0x081fd8c1 0x00570a05 0x5cb01180
+0x00070503 0x5b007f80 0x00070506 0x5b007fa8
+0xfe2007e6 0x001fd400 0x00670503 0x5b300198
+0x0ff70308 0x5c120000 0x00270003 0x5c100000
+0xfe2607f1 0x181fc400 0x00870506 0x5b007f80
+0x0037ff03 0x5c470700 0x00870504 0x5b007f88
+0xfe2007e3 0x001fd400 0x00870507 0x5b200288
+0x00870506 0x5b280300 0x05670303 0x4cc00000
+0xfe2007fd 0x181fc4c0 0x00470604 0x5cc003a0
+0x00370405 0x5b007f80 0x00370406 0x5b007f88
+0xfcc607f4 0x001fd800 0x00370407 0x5b207f88
+0x00370404 0x5b280280 0x00670404 0x5cc003a0
+0xfe2007f6 0x181fd8c0 0x0ff70405 0x5c120000
+0x00070503 0x5b000180 0x00070506 0x5b007fa8
+0xfda007f6 0x001f8400 0x00670503 0x5b300198
+0x00070307 0x5b6c0380 0x00300003 0x5c120000
+0xfda007f5 0x001fc400 0x00100404 0x1c000000
+0x0007030f 0x5b6c0380 0x00110404 0x1c000000
+0xfe2007fd 0x001fd440 0x0002ff04 0x5c470700
+0x00170403 0x1c000000 0x0037040f 0x366c0380
+0xfda007f6 0x001ff400 0x00370303 0x04000000
+0x0ff70307 0x5b6b0380 0x0008000f 0xf0f80000
+0xfe2207f1 0x081fd000 0x0027020a 0x38480000
+0x01e70209 0x38290000 0x00270011 0x38480000
+0xfea007f1 0x001f8400 0x05470a0e 0x4c108000
+0x01e70012 0x38290000 0x0557090f 0x4c100800
+0xfe2207f6 0x001fd840 0x05270a0c 0x4c108000
+0x0537090d 0x4c100800 0x05070a0a 0x4c108000
+0xfe2007f6 0x001fc801 0x05170909 0x4c100800
+0x00e70004 0x5c980780 0x00f70005 0x5c980780
+0xfe2007f0 0x001fc800 0x00c70006 0x5c980780
+0x0007040b 0xeed42000 0x00d70007 0x5c980780
+0xfe4007f0 0x001fc000 0x00a70008 0x5c980780
+0x00070606 0xeed42000 0x01170c0c 0x5c108000
+0xfca000b1 0x101fc400 0x00070808 0xeed42000
+0xfff70303 0x1c0fffff 0x01270d0d 0x5c100800
+0xfea407f1 0x001fc400 0x0117040e 0x5c108000
+0x0ff70307 0x5b6b0380 0x0127050f 0x5c100800
+0xfca007f1 0x003fdc00 0x01170a0a 0x5c108000
+0x00270002 0x5c100000 0x01270909 0x5c100800
+0x1e2107f2 0x001ff400 0x0087060b 0x59800580
+0x0007040b 0xeedc2000 0xf300000f 0xe2400fff
+0xffa007fd 0x081fc400 0x0007000f 0xf0f80000
+0x0009000f 0xe3000000 0x00270003 0x38480000
+0xfe200ff6 0x001fd440 0x01e70004 0x38290000
+0x0027021e 0x38480000 0x01e70205 0x38290000
+0xfe2207f6 0x001fd840 0x05271e12 0x4c108000
+0x05370513 0x4c100800 0x05071e16 0x4c108000
+0xfe0007e2 0x003fd800 0x05170517 0x4c100800
+0x05471e1e 0x4c108000 0x00071608 0xeed42000
+0xfe4007f0 0x101fc000 0x0557051f 0x4c100800
+0x00071205 0xeed42000 0x0037120e 0x5c108000
+0xfe2007b6 0x001fd880 0x00071e1a 0xeed42000
+0x0047130f 0x5c100800 0x0037160a 0x5c108000
+0xfec007e1 0x001fdc80 0x0047170b 0x5c100800
+0x00371e06 0x5c108000 0x00471f07 0x5c100800
+0xfe2107f2 0x001fc400 0x00870505 0x59800d00
+0x00071e05 0xeedc2000 0x00070e08 0xeed42000
+0xf62007f1 0x001f9800 0x00070a09 0xeed42000
+0x0007060c 0xeed42000 0x00370e1a 0x5c108000
+0xfec407f1 0x101fc480 0x00470f1b 0x5c100800
+0x00370a16 0x5c108000 0x00470b17 0x5c100800
+0xfee007f6 0x041f8800 0x00370612 0x5c108000
+0x00470713 0x5c100800 0x00970810 0x59800600
+0xfe2007f1 0x001fc400 0x00070610 0xeedc2000
+0x00071a05 0xeed42000 0x0007160e 0xeed42000
+0xfec007b1 0x001f8400 0x0007120f 0xeed42000
+0x00371a0a 0x5c108000 0x00471b0b 0x5c100800
+0xfe2407f6 0x001fd880 0x0037160c 0x5c108000
+0x0047170d 0x5c100800 0x00371208 0x5c108000
+0xfe4007f7 0x001fc420 0x00471309 0x5c100800
+0x00e70505 0x59800780 0x00071205 0xeedc2000
+0xfe2007f1 0x001ec400 0x00070a0a 0xeed42000
+0x00070c0c 0xeed42000 0x00070807 0xeed42000
+0xfec007e6 0x001fb400 0x00270002 0x5cc00000
+0x00270002 0x5cc00000 0x05670207 0x4b6d0380
+0x1e2107f2 0x001ff400 0x00c70a07 0x59800380
+0x00070807 0xeedc2000 0xdf08000f 0xe2400fff
+0xffe007ff 0x001f8000 0x0007000f 0xe3000000
+0xff87000f 0xe2400fff 0x00070f00 0x50b00000
+
+
+Fatbin ptx code:
+================
+arch = sm_52
+code version = [8,4]
+host = linux
+compile_size = 64bit
+compressed
+ptxasOptions = 
